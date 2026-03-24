@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "en-US",
     // Update this if you choose a different repo name or move to a custom domain.
-    baseUrl: "life2harsh.github.io/portfolio",
+    baseUrl: "harshjha.xyz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
