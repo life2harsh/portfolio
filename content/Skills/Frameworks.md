@@ -62,4 +62,4 @@ Primary dev environment.
 - **libcurl** — HTTP in C/C++
 
 ---
-Related: [[Views/Skills Graph|Skills Graph]] · [[Views/Projects Graph|Projects Graph]]
+Related: [[Projects/Cocoon|Cocoon]] · [[Projects/RepoBrowser|RepoBrowser]] · [[Projects/WiFiAutologger|WiFiAutologger]]

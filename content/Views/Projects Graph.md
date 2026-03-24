@@ -1,6 +1,7 @@
 ---
 title: Projects Graph
 tags: [view, graph]
+draft: true
 ---
 
 # Projects Graph

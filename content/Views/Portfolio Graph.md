@@ -1,6 +1,7 @@
 ---
 title: Portfolio Graph
 tags: [view, graph]
+draft: true
 ---
 
 # Portfolio Graph

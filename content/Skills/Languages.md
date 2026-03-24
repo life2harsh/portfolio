@@ -29,4 +29,4 @@ Typed frontend work. Used in [[Projects/RepoBrowser|RepoBrowser]] and [[Projects
 Database query and schema design. Used heavily in [[Projects/Vortex|Vortex]] for the 10k-user schema.
 
 ---
-Related: [[Views/Skills Graph|Skills Graph]] · [[Views/Projects Graph|Projects Graph]]
+Related: [[Projects/wimg|wimg]] · [[Projects/Cocoon|Cocoon]] · [[Projects/Vortex|Vortex]]

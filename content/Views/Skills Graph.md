@@ -1,6 +1,7 @@
 ---
 title: Skills Graph
 tags: [view, graph]
+draft: true
 ---
 
 # Skills Graph
