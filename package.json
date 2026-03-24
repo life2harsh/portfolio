@@ -1,6 +1,6 @@
 {
-  "name": "@jackyzha0/quartz",
-  "description": "🌱 publish your digital garden and notes as a website",
+  "name": "harsh-portfolio-site",
+  "description": "Static portfolio site for the Harsh Jha Obsidian vault",
   "private": true,
   "version": "4.5.2",
   "type": "module",
@@ -13,6 +13,12 @@
   },
   "scripts": {
     "quartz": "./quartz/bootstrap-cli.mjs",
+    "sync:vault": "node ./scripts/sync-vault.mjs",
+    "build": "npx quartz build",
+    "build:vault": "npm run sync:vault && npm run build",
+    "dev": "npx quartz build --serve",
+    "dev:vault": "npm run sync:vault && npm run dev",
+    "sync:github": "npm run sync:vault && npx quartz sync",
     "docs": "npx quartz build --serve -d docs",
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",

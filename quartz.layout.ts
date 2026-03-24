@@ -8,8 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/life2harsh",
+      LinkedIn: "https://linkedin.com/in/life2harsh",
+      Email: "mailto:jhaharsh29@gmail.com",
     },
   }),
 }
@@ -41,7 +42,34 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        depth: 2,
+        scale: 1.15,
+        repelForce: 0.7,
+        centerForce: 0.45,
+        linkDistance: 34,
+        fontSize: 0.55,
+        opacityScale: 1.1,
+        showTags: false,
+        removeTags: ["portfolio", "index", "view", "graph", "project-view"],
+        focusOnHover: true,
+        enableRadial: true,
+      },
+      globalGraph: {
+        depth: -1,
+        scale: 0.85,
+        repelForce: 0.6,
+        centerForce: 0.25,
+        linkDistance: 30,
+        fontSize: 0.5,
+        opacityScale: 1,
+        showTags: false,
+        removeTags: ["portfolio", "index", "view", "graph", "project-view"],
+        focusOnHover: true,
+        enableRadial: true,
+      },
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
