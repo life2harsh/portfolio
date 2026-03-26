@@ -13,7 +13,7 @@ status: shipped
 > Render images, videos, and GIFs directly in your terminal.
 
 <div class="project-preview">
-  <div class="project-preview__eyebrow">Preview Placeholder</div>
+  <div class="project-preview__eyebrow">Local Preview Asset</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
       <h3>wimg</h3>
@@ -23,9 +23,17 @@ status: shipped
       </div>
     </div>
     <div class="project-preview__screen project-preview__screen--placeholder">
-      <strong>Preview coming soon</strong>
-      <span>No hosted demo linked yet</span>
-      <p>This slot is reserved for terminal renders, GIF playback frames, or benchmark visuals.</p>
+      <div class="project-preview__screen-header">
+        <strong>Preview image</strong>
+        <span>Served locally from the portfolio assets</span>
+      </div>
+      <img
+        class="project-preview__image"
+        src="/photos/wimg.jpg"
+        alt="wimg terminal preview"
+        loading="lazy"
+      />
+      <p class="project-preview__fallback">This preview is bundled with the site, so it does not rely on an external host.</p>
     </div>
   </div>
 </div>
