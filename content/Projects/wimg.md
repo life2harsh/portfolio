@@ -16,7 +16,6 @@ status: shipped
   <div class="project-preview__eyebrow">Local Preview Asset</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>wimg</h3>
       <p>A terminal-native media renderer focused on performance, portability, and surprisingly smooth playback.</p>
       <div class="project-preview__actions">
         <a href="https://github.com/life2harsh/wimg" target="_blank" rel="noopener">Source code</a>
@@ -27,12 +26,14 @@ status: shipped
         <strong>Preview image</strong>
         <span>Served locally from the portfolio assets</span>
       </div>
-      <img
-        class="project-preview__image"
-        src="/photos/wimg.jpg"
-        alt="wimg terminal preview"
-        loading="lazy"
-      />
+      <div class="project-preview__viewport">
+        <img
+          class="project-preview__image"
+          src="/photos/wimg.jpg"
+          alt="wimg terminal preview"
+          loading="lazy"
+        />
+      </div>
       <p class="project-preview__fallback">This preview is bundled with the site, so it does not rely on an external host.</p>
     </div>
   </div>

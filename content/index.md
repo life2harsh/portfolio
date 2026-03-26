@@ -9,7 +9,7 @@ tags: [portfolio, index]
 
 Email: jhaharsh29@gmail.com  
 Phone: +91 8303514867  
-Profiles: [LinkedIn](https://linkedin.com/in/life2harsh) · [GitHub](https://github.com/life2harsh)
+Profiles: [LinkedIn](https://linkedin.com/in/life2harsh) · [GitHub](https://github.com/life2harsh) · [Resume PDF](resume.pdf)
 
 ---
 

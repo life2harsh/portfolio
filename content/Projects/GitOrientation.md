@@ -12,11 +12,10 @@ status: shipped
 
 > An interactive git-learning experience for Open Source Developers Community, designed as a CRT terminal in WebGL.
 
-<div class="project-preview">
+<div class="project-preview" style="--project-preview-width: 1200px; --project-preview-height: 820px; --project-preview-scale: 0.78;">
   <div class="project-preview__eyebrow">Production Deployment</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>Git Orientation</h3>
       <p>A stylized browser-based onboarding flow that teaches git concepts through a moody CRT interface and puzzle-like interaction design.</p>
     </div>
     <div class="project-preview__screen project-preview__screen--live">
@@ -24,13 +23,15 @@ status: shipped
         <strong>Live preview</strong>
         <span>Embedded from osdc.github.io</span>
       </div>
-      <iframe
-        class="project-preview__frame"
-        src="https://osdc.github.io/git-orientation/questions.html"
-        title="Git Orientation live preview"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      ></iframe>
+      <div class="project-preview__viewport">
+        <iframe
+          class="project-preview__frame"
+          src="https://osdc.github.io/git-orientation/questions.html"
+          title="Git Orientation live preview"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
       <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://osdc.github.io/git-orientation/questions.html" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>

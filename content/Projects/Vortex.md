@@ -13,11 +13,10 @@ status: shipped
 
 > Containerized blogging and chat app load-tested to 10,000 concurrent users.
 
-<div class="project-preview">
+<div class="project-preview" style="--project-preview-width: 1360px; --project-preview-height: 920px; --project-preview-scale: 0.74;">
   <div class="project-preview__eyebrow">Production Deployment</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>Vortex</h3>
       <p>A content platform that combines blogging and chat with containerized deployment and serious load targets.</p>
       <div class="project-preview__actions">
         <a href="https://github.com/life2harsh/vortex" target="_blank" rel="noopener">Source code</a>
@@ -28,13 +27,15 @@ status: shipped
         <strong>Live preview</strong>
         <span>Embedded from vortex.harshjha.xyz</span>
       </div>
-      <iframe
-        class="project-preview__frame"
-        src="https://vortex.harshjha.xyz/"
-        title="Vortex live preview"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      ></iframe>
+      <div class="project-preview__viewport">
+        <iframe
+          class="project-preview__frame"
+          src="https://vortex.harshjha.xyz/"
+          title="Vortex live preview"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
       <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://vortex.harshjha.xyz/" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>

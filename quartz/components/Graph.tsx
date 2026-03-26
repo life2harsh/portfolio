@@ -10,6 +10,7 @@ export interface D3Config {
   zoom: boolean
   depth: number
   scale: number
+  initialZoom?: number
   repelForce: number
   centerForce: number
   linkDistance: number
@@ -32,6 +33,7 @@ const defaultOptions: GraphOptions = {
     zoom: true,
     depth: 1,
     scale: 1.1,
+    initialZoom: 1,
     repelForce: 0.5,
     centerForce: 0.3,
     linkDistance: 30,
@@ -47,6 +49,7 @@ const defaultOptions: GraphOptions = {
     zoom: true,
     depth: -1,
     scale: 0.9,
+    initialZoom: 1,
     repelForce: 0.5,
     centerForce: 0.2,
     linkDistance: 30,

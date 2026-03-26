@@ -17,7 +17,6 @@ award: "First Runner-Up — OSDHack '25"
   <div class="project-preview__eyebrow">Preview Placeholder</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>RetroBBS</h3>
       <p>A retro-styled realtime chat platform with embedded multiplayer games and voice support.</p>
       <div class="project-preview__actions">
         <a href="https://github.com/life2harsh/osdhack" target="_blank" rel="noopener">Source code</a>

@@ -24,11 +24,50 @@ const isSamePage = (url: URL): boolean => {
   return sameOrigin && samePath
 }
 
+const shouldOpenInNewTab = (anchor: HTMLAnchorElement) => {
+  const href = anchor.getAttribute("href")?.trim() ?? ""
+  if (!href || href.startsWith("#") || href.startsWith("javascript:")) {
+    return false
+  }
+
+  if ("sameTab" in anchor.dataset) {
+    return false
+  }
+
+  if (anchor.getAttribute("role") === "anchor" || anchor.hasAttribute("data-no-popover")) {
+    return false
+  }
+
+  if (
+    anchor.closest(
+      ".page-title, .explorer, .toc, .breadcrumbs, .backlinks, .tags, .tag-list, h1, h2, h3, h4, h5, h6",
+    )
+  ) {
+    return false
+  }
+
+  return Boolean(anchor.closest("article, .page-footer, footer"))
+}
+
+function decorateLinks(root: Document | Element = document) {
+  const anchors = root.querySelectorAll("a[href]")
+  for (const anchor of anchors) {
+    if (!(anchor instanceof HTMLAnchorElement)) continue
+    if (!shouldOpenInNewTab(anchor)) continue
+
+    anchor.setAttribute("target", "_blank")
+    const existingRel = new Set((anchor.getAttribute("rel") ?? "").split(/\s+/).filter(Boolean))
+    existingRel.add("noopener")
+    existingRel.add("noreferrer")
+    anchor.setAttribute("rel", [...existingRel].join(" "))
+  }
+}
+
 const getOpts = ({ target }: Event): { url: URL; scroll?: boolean } | undefined => {
   if (!isElement(target)) return
-  if (target.attributes.getNamedItem("target")?.value === "_blank") return
   const a = target.closest("a")
   if (!a) return
+  if (a.target === "_blank") return
   if ("routerIgnore" in a.dataset) return
   const { href } = a
   if (!isLocalUrl(href)) return
@@ -103,6 +142,7 @@ async function _navigate(url: URL, isBack: boolean = false) {
 
   // morph body
   await micromorph(document.body, html.body)
+  decorateLinks(document)
 
   // scroll into place and add history
   if (!isBack) {
@@ -188,6 +228,7 @@ function createRouter() {
 }
 
 createRouter()
+decorateLinks(document)
 notifyNav(getFullSlug(window))
 
 if (!customElements.get("route-announcer")) {

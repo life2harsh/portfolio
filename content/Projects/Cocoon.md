@@ -13,11 +13,10 @@ status: active
 
 > A privacy-conscious journaling app with a React frontend, FastAPI backend, and PWA support.
 
-<div class="project-preview">
+<div class="project-preview" style="--project-preview-width: 1360px; --project-preview-height: 920px; --project-preview-scale: 0.74;">
   <div class="project-preview__eyebrow">Production Deployment</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>Cocoon</h3>
       <p>A calm journaling interface built around privacy, local-first writing, and a soft app-like flow.</p>
       <div class="project-preview__actions">
         <a href="https://github.com/life2harsh/cocoon" target="_blank" rel="noopener">Source code</a>
@@ -28,13 +27,15 @@ status: active
         <strong>Live preview</strong>
         <span>Embedded from cocoon.harshjha.xyz</span>
       </div>
-      <iframe
-        class="project-preview__frame"
-        src="https://cocoon.harshjha.xyz"
-        title="Cocoon live preview"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      ></iframe>
+      <div class="project-preview__viewport">
+        <iframe
+          class="project-preview__frame"
+          src="https://cocoon.harshjha.xyz"
+          title="Cocoon live preview"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
       <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://cocoon.harshjha.xyz" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>

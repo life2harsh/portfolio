@@ -16,7 +16,6 @@ status: shipped
   <div class="project-preview__eyebrow">Preview Placeholder</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
-      <h3>WiFiAutologger</h3>
       <p>A cross-platform login automation tool for annoying captive portals across desktop and mobile.</p>
       <div class="project-preview__actions">
         <a href="https://github.com/life2harsh/WiFiAutologger" target="_blank" rel="noopener">Source code</a>

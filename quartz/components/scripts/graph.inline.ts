@@ -68,6 +68,11 @@ type TweenNode = {
   stop: () => void
 }
 
+function openGraphNode(fullSlug: FullSlug, targetSlug: SimpleSlug) {
+  const targetUrl = new URL(resolveRelative(fullSlug, targetSlug), window.location.toString())
+  window.open(targetUrl.toString(), "_blank", "noopener,noreferrer")
+}
+
 async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   const slug = simplifySlug(fullSlug)
   const visited = getVisited()
@@ -78,6 +83,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     zoom: enableZoom,
     depth,
     scale,
+    initialZoom = 1,
     repelForce,
     centerForce,
     linkDistance,
@@ -450,6 +456,22 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   }
 
   let currentTransform = zoomIdentity
+  const applyTransform = (transform: typeof zoomIdentity) => {
+    currentTransform = transform
+    stage.scale.set(transform.k, transform.k)
+    stage.position.set(transform.x, transform.y)
+
+    const zoomScale = transform.k * opacityScale
+    const scaleOpacity = Math.max((zoomScale - 1) / 3.75, 0)
+    const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+
+    for (const label of labelsContainer.children) {
+      if (!activeNodes.includes(label)) {
+        label.alpha = scaleOpacity
+      }
+    }
+  }
+
   if (enableDrag) {
     select<HTMLCanvasElement, NodeData | undefined>(app.canvas).call(
       drag<HTMLCanvasElement, NodeData | undefined>()
@@ -482,44 +504,43 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
           // if the time between mousedown and mouseup is short, we consider it a click
           if (Date.now() - dragStartTime < 500) {
             const node = graphData.nodes.find((n) => n.id === event.subject.id) as NodeData
-            const targ = resolveRelative(fullSlug, node.id)
-            window.spaNavigate(new URL(targ, window.location.toString()))
+            openGraphNode(fullSlug, node.id)
           }
         }),
     )
   } else {
     for (const node of nodeRenderData) {
       node.gfx.on("click", () => {
-        const targ = resolveRelative(fullSlug, node.simulationData.id)
-        window.spaNavigate(new URL(targ, window.location.toString()))
+        openGraphNode(fullSlug, node.simulationData.id)
       })
     }
   }
 
   if (enableZoom) {
-    select<HTMLCanvasElement, NodeData>(app.canvas).call(
-      zoom<HTMLCanvasElement, NodeData>()
-        .extent([
-          [0, 0],
-          [width, height],
-        ])
-        .scaleExtent([0.25, 4])
-        .on("zoom", ({ transform }) => {
-          currentTransform = transform
-          stage.scale.set(transform.k, transform.k)
-          stage.position.set(transform.x, transform.y)
+    const zoomBehavior = zoom<HTMLCanvasElement, NodeData>()
+      .extent([
+        [0, 0],
+        [width, height],
+      ])
+      .scaleExtent([0.25, 4])
+      .on("zoom", ({ transform }) => {
+        applyTransform(transform)
+      })
 
-          // zoom adjusts opacity of labels too
-          const scale = transform.k * opacityScale
-          let scaleOpacity = Math.max((scale - 1) / 3.75, 0)
-          const activeNodes = nodeRenderData.filter((n) => n.active).flatMap((n) => n.label)
+    const canvasSelection = select<HTMLCanvasElement, NodeData>(app.canvas).call(zoomBehavior)
 
-          for (const label of labelsContainer.children) {
-            if (!activeNodes.includes(label)) {
-              label.alpha = scaleOpacity
-            }
-          }
-        }),
+    if (initialZoom !== 1) {
+      const centeredTransform = zoomIdentity
+        .translate((width * (1 - initialZoom)) / 2, (height * (1 - initialZoom)) / 2)
+        .scale(initialZoom)
+
+      canvasSelection.call(zoomBehavior.transform, centeredTransform)
+    }
+  } else if (initialZoom !== 1) {
+    applyTransform(
+      zoomIdentity
+        .translate((width * (1 - initialZoom)) / 2, (height * (1 - initialZoom)) / 2)
+        .scale(initialZoom),
     )
   }
 
