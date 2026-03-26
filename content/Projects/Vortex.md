@@ -20,14 +20,22 @@ status: shipped
       <h3>Vortex</h3>
       <p>A content platform that combines blogging and chat with containerized deployment and serious load targets.</p>
       <div class="project-preview__actions">
-        <a href="https://vortex.harshjha.xyz/" target="_blank" rel="noopener">Visit live site</a>
         <a href="https://github.com/life2harsh/vortex" target="_blank" rel="noopener">Source code</a>
       </div>
     </div>
     <div class="project-preview__screen project-preview__screen--live">
-      <strong>Live preview</strong>
-      <span>Deployed on `vortex.harshjha.xyz`</span>
-      <p>Blogging, chat, and production-like deployment wrapped into one app surface.</p>
+      <div class="project-preview__screen-header">
+        <strong>Live preview</strong>
+        <span>Embedded from vortex.harshjha.xyz</span>
+      </div>
+      <iframe
+        class="project-preview__frame"
+        src="https://vortex.harshjha.xyz/"
+        title="Vortex live preview"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      ></iframe>
+      <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://vortex.harshjha.xyz/" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>
 </div>

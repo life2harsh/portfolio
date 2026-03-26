@@ -18,14 +18,20 @@ status: shipped
     <div class="project-preview__copy">
       <h3>Git Orientation</h3>
       <p>A stylized browser-based onboarding flow that teaches git concepts through a moody CRT interface and puzzle-like interaction design.</p>
-      <div class="project-preview__actions">
-        <a href="https://osdc.github.io/git-orientation/questions.html" target="_blank" rel="noopener">Visit live site</a>
-      </div>
     </div>
     <div class="project-preview__screen project-preview__screen--live">
-      <strong>Live preview</strong>
-      <span>Deployed on `osdc.github.io`</span>
-      <p>Interactive WebGL CRT UI, question flow logic, and production workshop delivery.</p>
+      <div class="project-preview__screen-header">
+        <strong>Live preview</strong>
+        <span>Embedded from osdc.github.io</span>
+      </div>
+      <iframe
+        class="project-preview__frame"
+        src="https://osdc.github.io/git-orientation/questions.html"
+        title="Git Orientation live preview"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      ></iframe>
+      <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://osdc.github.io/git-orientation/questions.html" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>
 </div>

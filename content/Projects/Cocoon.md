@@ -20,14 +20,22 @@ status: active
       <h3>Cocoon</h3>
       <p>A calm journaling interface built around privacy, local-first writing, and a soft app-like flow.</p>
       <div class="project-preview__actions">
-        <a href="https://cocoon.harshjha.xyz" target="_blank" rel="noopener">Visit live site</a>
         <a href="https://github.com/life2harsh/cocoon" target="_blank" rel="noopener">Source code</a>
       </div>
     </div>
     <div class="project-preview__screen project-preview__screen--live">
-      <strong>Live preview</strong>
-      <span>Deployed on `cocoon.harshjha.xyz`</span>
-      <p>Production-ready journaling flows, auth, and reminder support.</p>
+      <div class="project-preview__screen-header">
+        <strong>Live preview</strong>
+        <span>Embedded from cocoon.harshjha.xyz</span>
+      </div>
+      <iframe
+        class="project-preview__frame"
+        src="https://cocoon.harshjha.xyz"
+        title="Cocoon live preview"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      ></iframe>
+      <p class="project-preview__fallback">If the embed is blocked by the site, open <a href="https://cocoon.harshjha.xyz" target="_blank" rel="noopener">the live deployment</a>.</p>
     </div>
   </div>
 </div>
@@ -52,4 +60,4 @@ One of the most interesting parts of Cocoon is how the repository is structured 
 - [GitHub](https://github.com/life2harsh/cocoon)
 
 ---
-Related: [[Skills/Languages#TypeScript|TypeScript]] · [[Skills/Languages#Python|Python]] · [[Skills/Frameworks#React.js / Next.js|React]] · [[Skills/Frameworks#FastAPI / Express.js|FastAPI]] · [[Skills/Frameworks#Tailwind CSS|Tailwind CSS]]
+Related: [[Skills/Languages#TypeScript|TypeScript]] · [[Skills/Languages#Python|Python]] · [[Skills/Frameworks#React.js / Next.js|React]] · [[Skills/utFrameworks#FastAPI / Express.js|FastAPI]] · [[Skills/Frameworks#Tailwind CSS|Tailwind CSS]]
