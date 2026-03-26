@@ -52,16 +52,6 @@ type NodeRenderData = GraphicsInfo & {
   label: Text
 }
 
-const projectPalette: Record<string, string> = {
-  "proj-cocoon": "#7ee7d3",
-  "proj-gitorientation": "#ffb86b",
-  "proj-repobrowser": "#8cb4ff",
-  "proj-retrobbs": "#ff8ea1",
-  "proj-vortex": "#b29bff",
-  "proj-wifiautologger": "#8df0a5",
-  "proj-wimg": "#78d6ff",
-}
-
 const localStorageKey = "graph-visited"
 function getVisited(): Set<SimpleSlug> {
   return new Set(JSON.parse(localStorage.getItem(localStorageKey) ?? "[]"))
@@ -203,16 +193,11 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
-  const projectTagFor = (d: NodeData) => d.tags.find((tag) => tag.startsWith("proj-"))
-
   // calculate color
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
-    const projectTag = projectTagFor(d)
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (projectTag && projectPalette[projectTag]) {
-      return projectPalette[projectTag]
     } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
       return computedStyleMap["--tertiary"]
     } else {
@@ -224,9 +209,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     const numLinks = graphData.links.filter(
       (l) => l.source.id === d.id || l.target.id === d.id,
     ).length
-    const isProject = d.tags.includes("project")
-    const isProjectNode = !!projectTagFor(d)
-    return 2 + Math.sqrt(numLinks) + (isProject ? 2.25 : isProjectNode ? 0.9 : 0)
+    return 2 + Math.sqrt(numLinks)
   }
 
   let hoveredNodeId: string | null = null
@@ -367,31 +350,17 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
   tweens.clear()
 
   const app = new Application()
-  try {
-    await app.init({
-      width,
-      height,
-      antialias: true,
-      autoStart: false,
-      autoDensity: true,
-      backgroundAlpha: 0,
-      preference: "webgpu",
-      resolution: window.devicePixelRatio,
-      eventMode: "static",
-    })
-  } catch {
-    await app.init({
-      width,
-      height,
-      antialias: true,
-      autoStart: false,
-      autoDensity: true,
-      backgroundAlpha: 0,
-      preference: "webgl",
-      resolution: window.devicePixelRatio,
-      eventMode: "static",
-    })
-  }
+  await app.init({
+    width,
+    height,
+    antialias: true,
+    autoStart: false,
+    autoDensity: true,
+    backgroundAlpha: 0,
+    preference: "webgl",
+    resolution: window.devicePixelRatio,
+    eventMode: "static",
+  })
   graph.appendChild(app.canvas)
 
   const stage = app.stage
@@ -448,14 +417,6 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
 
     if (isTagNode) {
       gfx.stroke({ width: 2, color: computedStyleMap["--tertiary"] })
-    } else {
-      const projectTag = projectTagFor(n)
-      if (projectTag && projectPalette[projectTag]) {
-        gfx.stroke({
-          width: n.tags.includes("project") ? 2.5 : 1.5,
-          color: projectPalette[projectTag],
-        })
-      }
     }
 
     nodesContainer.addChild(gfx)
@@ -567,7 +528,7 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     if (stopAnimation) return
     for (const n of nodeRenderData) {
       const { x, y } = n.simulationData
-      if (!x || !y) continue
+      if (x == null || y == null) continue
       n.gfx.position.set(x + width / 2, y + height / 2)
       if (n.label) {
         n.label.position.set(x + width / 2, y + height / 2)
