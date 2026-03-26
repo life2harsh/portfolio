@@ -13,7 +13,7 @@ status: shipped
 > Render images, videos, and GIFs directly in your terminal.
 
 <div class="project-preview">
-  <div class="project-preview__eyebrow">Local Preview Asset</div>
+  <div class="project-preview__eyebrow">Bundled Preview</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
       <p>A terminal-native media renderer focused on performance, portability, and surprisingly smooth playback.</p>
@@ -21,10 +21,10 @@ status: shipped
         <a href="https://github.com/life2harsh/wimg" target="_blank" rel="noopener">Source code</a>
       </div>
     </div>
-    <div class="project-preview__screen project-preview__screen--placeholder">
+    <div class="project-preview__screen project-preview__screen--asset">
       <div class="project-preview__screen-header">
         <strong>Preview image</strong>
-        <span>Served locally from the portfolio assets</span>
+        <span>Bundled with portfolio assets</span>
       </div>
       <div class="project-preview__viewport">
         <img
@@ -34,7 +34,6 @@ status: shipped
           loading="lazy"
         />
       </div>
-      <p class="project-preview__fallback">This preview is bundled with the site, so it does not rely on an external host.</p>
     </div>
   </div>
 </div>

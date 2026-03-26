@@ -14,7 +14,7 @@ award: "First Runner-Up — OSDHack '25"
 > A retro-themed communication suite. Won First Runner-Up at OSDHack '25.
 
 <div class="project-preview">
-  <div class="project-preview__eyebrow">Preview Placeholder</div>
+  <div class="project-preview__eyebrow">Bundled Preview</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
       <p>A retro-styled realtime chat platform with embedded multiplayer games and voice support.</p>
@@ -22,10 +22,19 @@ award: "First Runner-Up — OSDHack '25"
         <a href="https://github.com/life2harsh/osdhack" target="_blank" rel="noopener">Source code</a>
       </div>
     </div>
-    <div class="project-preview__screen project-preview__screen--placeholder">
-      <strong>Preview coming soon</strong>
-      <span>No stable public deployment linked yet</span>
-      <p>This card can later hold a gameplay screenshot or a hosted hackathon demo link.</p>
+    <div class="project-preview__screen project-preview__screen--asset">
+      <div class="project-preview__screen-header">
+        <strong>Preview image</strong>
+        <span>Bundled with portfolio assets</span>
+      </div>
+      <div class="project-preview__viewport">
+        <img
+          class="project-preview__image"
+          src="/photos/retrobbs.jpg"
+          alt="RetroBBS interface preview"
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 </div>
