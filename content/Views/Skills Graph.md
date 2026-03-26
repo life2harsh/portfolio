@@ -18,6 +18,7 @@ Open the local graph for this note to see how the skill notes connect back into 
 ## Connected Projects
 
 - [[Projects/Cocoon]]
+- [[Projects/GitOrientation]]
 - [[Projects/RepoBrowser]]
 - [[Projects/RetroBBS]]
 - [[Projects/Vortex]]

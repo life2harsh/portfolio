@@ -12,6 +12,24 @@ status: shipped
 
 > Drop in a repo. Get intelligent annotations and summaries powered by LLMs.
 
+<div class="project-preview">
+  <div class="project-preview__eyebrow">Preview Placeholder</div>
+  <div class="project-preview__body">
+    <div class="project-preview__copy">
+      <h3>RepoBrowser</h3>
+      <p>An AI-assisted repository explorer focused on annotations, summaries, and developer workflow speed.</p>
+      <div class="project-preview__actions">
+        <a href="https://github.com/life2harsh/RepoBrowser" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </div>
+    <div class="project-preview__screen project-preview__screen--placeholder">
+      <strong>Preview coming soon</strong>
+      <span>No public deployment linked yet</span>
+      <p>This slot is ready for a screenshot or hosted demo once the live version is public.</p>
+    </div>
+  </div>
+</div>
+
 ## Stack
 `Next.js` · `TypeScript` · `LLM Integration`
 

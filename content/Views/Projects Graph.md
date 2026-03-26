@@ -13,6 +13,7 @@ Open the local graph for this note to browse the full project network. The six p
 ## Projects
 
 - [[Projects/Cocoon]]
+- [[Projects/GitOrientation]]
 - [[Projects/RepoBrowser]]
 - [[Projects/RetroBBS]]
 - [[Projects/Vortex]]

@@ -20,6 +20,7 @@ Open the local graph for this note to browse the full portfolio structure.
 ## Projects
 
 - [[Projects/Cocoon]]
+- [[Projects/GitOrientation]]
 - [[Projects/RepoBrowser]]
 - [[Projects/RetroBBS]]
 - [[Projects/Vortex]]

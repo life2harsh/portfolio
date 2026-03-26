@@ -13,6 +13,24 @@ award: "First Runner-Up — OSDHack '25"
 
 > A retro-themed communication suite. Won First Runner-Up at OSDHack '25.
 
+<div class="project-preview">
+  <div class="project-preview__eyebrow">Preview Placeholder</div>
+  <div class="project-preview__body">
+    <div class="project-preview__copy">
+      <h3>RetroBBS</h3>
+      <p>A retro-styled realtime chat platform with embedded multiplayer games and voice support.</p>
+      <div class="project-preview__actions">
+        <a href="https://github.com/life2harsh/osdhack" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </div>
+    <div class="project-preview__screen project-preview__screen--placeholder">
+      <strong>Preview coming soon</strong>
+      <span>No stable public deployment linked yet</span>
+      <p>This card can later hold a gameplay screenshot or a hosted hackathon demo link.</p>
+    </div>
+  </div>
+</div>
+
 ## Award
 **First Runner-Up, OSDHack '25** — recognised by FOSS United, .xyz, and CodeCrafters
 

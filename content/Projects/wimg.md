@@ -12,6 +12,24 @@ status: shipped
 
 > Render images, videos, and GIFs directly in your terminal.
 
+<div class="project-preview">
+  <div class="project-preview__eyebrow">Preview Placeholder</div>
+  <div class="project-preview__body">
+    <div class="project-preview__copy">
+      <h3>wimg</h3>
+      <p>A terminal-native media renderer focused on performance, portability, and surprisingly smooth playback.</p>
+      <div class="project-preview__actions">
+        <a href="https://github.com/life2harsh/wimg" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </div>
+    <div class="project-preview__screen project-preview__screen--placeholder">
+      <strong>Preview coming soon</strong>
+      <span>No hosted demo linked yet</span>
+      <p>This slot is reserved for terminal renders, GIF playback frames, or benchmark visuals.</p>
+    </div>
+  </div>
+</div>
+
 ## Stack
 `Rust` · `FFmpeg` · `Libsixel`
 

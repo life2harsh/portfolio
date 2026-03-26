@@ -13,6 +13,25 @@ status: active
 
 > A privacy-conscious journaling app with a React frontend, FastAPI backend, and PWA support.
 
+<div class="project-preview">
+  <div class="project-preview__eyebrow">Production Deployment</div>
+  <div class="project-preview__body">
+    <div class="project-preview__copy">
+      <h3>Cocoon</h3>
+      <p>A calm journaling interface built around privacy, local-first writing, and a soft app-like flow.</p>
+      <div class="project-preview__actions">
+        <a href="https://cocoon.harshjha.xyz" target="_blank" rel="noopener">Visit live site</a>
+        <a href="https://github.com/life2harsh/cocoon" target="_blank" rel="noopener">Source code</a>
+      </div>
+    </div>
+    <div class="project-preview__screen project-preview__screen--live">
+      <strong>Live preview</strong>
+      <span>Deployed on `cocoon.harshjha.xyz`</span>
+      <p>Production-ready journaling flows, auth, and reminder support.</p>
+    </div>
+  </div>
+</div>
+
 ## Stack
 `React` · `TypeScript` · `FastAPI` · `SQLite` · `Tailwind CSS`
 
