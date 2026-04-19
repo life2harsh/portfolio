@@ -20,21 +20,33 @@ type FolderState = {
 }
 
 let currentExplorerState: Array<FolderState>
+
+function isVisible(element: HTMLElement) {
+  if (typeof element.checkVisibility === "function") {
+    return element.checkVisibility()
+  }
+
+  const style = window.getComputedStyle(element)
+  return (
+    style.display !== "none" && style.visibility !== "hidden" && element.getClientRects().length > 0
+  )
+}
+
+function setExplorerCollapsed(explorer: HTMLElement, collapsed: boolean) {
+  explorer.classList.toggle("collapsed", collapsed)
+  explorer.setAttribute("aria-expanded", collapsed ? "false" : "true")
+
+  if (collapsed) {
+    document.documentElement.classList.remove("mobile-no-scroll")
+  } else {
+    document.documentElement.classList.add("mobile-no-scroll")
+  }
+}
+
 function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
-  const explorerCollapsed = nearestExplorer.classList.toggle("collapsed")
-  nearestExplorer.setAttribute(
-    "aria-expanded",
-    nearestExplorer.getAttribute("aria-expanded") === "true" ? "false" : "true",
-  )
-
-  if (!explorerCollapsed) {
-    // Stop <html> from being scrollable when mobile explorer is open
-    document.documentElement.classList.add("mobile-no-scroll")
-  } else {
-    document.documentElement.classList.remove("mobile-no-scroll")
-  }
+  setExplorerCollapsed(nearestExplorer, !nearestExplorer.classList.contains("collapsed"))
 }
 
 function toggleFolder(evt: MouseEvent) {
@@ -241,6 +253,19 @@ async function setupExplorer(currentSlug: FullSlug) {
       window.addCleanup(() => button.removeEventListener("click", toggleExplorer))
     }
 
+    const explorerLinks = explorer.getElementsByTagName("a")
+    for (const link of explorerLinks) {
+      const closeMobileExplorer = () => {
+        const mobileExplorer = explorer.querySelector(".mobile-explorer") as HTMLElement | null
+        if (mobileExplorer && isVisible(mobileExplorer)) {
+          setExplorerCollapsed(explorer, true)
+        }
+      }
+
+      link.addEventListener("click", closeMobileExplorer)
+      window.addCleanup(() => link.removeEventListener("click", closeMobileExplorer))
+    }
+
     // Set up folder click handlers
     if (opts.folderClickBehavior === "collapse") {
       const folderButtons = explorer.getElementsByClassName(
@@ -278,11 +303,10 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
     const mobileExplorer = explorer.querySelector(".mobile-explorer")
     if (!mobileExplorer) return
 
-    if (mobileExplorer.checkVisibility()) {
-      explorer.classList.add("collapsed")
-      explorer.setAttribute("aria-expanded", "false")
-
-      // Allow <html> to be scrollable when mobile explorer is collapsed
+    if (isVisible(mobileExplorer)) {
+      setExplorerCollapsed(explorer as HTMLElement, true)
+    } else {
+      setExplorerCollapsed(explorer as HTMLElement, false)
       document.documentElement.classList.remove("mobile-no-scroll")
     }
 
@@ -291,13 +315,23 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
 })
 
 window.addEventListener("resize", function () {
-  // Desktop explorer opens by default, and it stays open when the window is resized
-  // to mobile screen size. Applies `no-scroll` to <html> in this edge case.
-  const explorer = document.querySelector(".explorer")
-  if (explorer && !explorer.classList.contains("collapsed")) {
+  const explorer = document.querySelector(".explorer") as HTMLElement | null
+  const mobileExplorer = explorer?.querySelector(".mobile-explorer") as HTMLElement | null
+
+  if (!explorer || !mobileExplorer) return
+
+  if (!isVisible(mobileExplorer)) {
+    setExplorerCollapsed(explorer, false)
+    document.documentElement.classList.remove("mobile-no-scroll")
+    return
+  }
+
+  if (!explorer.classList.contains("collapsed")) {
     document.documentElement.classList.add("mobile-no-scroll")
     return
   }
+
+  document.documentElement.classList.remove("mobile-no-scroll")
 })
 
 function setFolderState(folderElement: HTMLElement, collapsed: boolean) {
