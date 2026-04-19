@@ -467,15 +467,27 @@
 }
 
 @media (max-width: 800px) {
+  :root {
+    font-size: 17px;
+  }
+
   :root[saved-theme="dark"] .search > .search-container > .search-space {
     width: 94vw;
+  }
+
+  :root[saved-theme="dark"] body,
+  :root[saved-theme="dark"] .page {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    overflow-x: hidden;
   }
 
   :root[saved-theme="dark"] .page > #quartz-body {
     box-sizing: border-box;
     width: 100%;
     max-width: 100vw;
-    padding: 0 0.85rem;
+    padding: 0 0.65rem;
     overflow-x: hidden;
   }
 
@@ -488,8 +500,22 @@
   }
 
   :root[saved-theme="dark"] article {
-    padding: 1.15rem;
+    padding: 1.25rem;
     border-radius: 14px;
+  }
+
+  :root[saved-theme="dark"] .article-title {
+    margin-top: 1.25rem;
+    font-size: 1.9rem;
+    line-height: 1.08;
+  }
+
+  :root[saved-theme="dark"] .content-meta {
+    margin: 0.35rem 0 0;
+  }
+
+  :root[saved-theme="dark"] .tags {
+    margin: 0.85rem 0 0.95rem;
   }
 
   :root[saved-theme="dark"] .page > #quartz-body .sidebar.left:has(.explorer) {
@@ -595,11 +621,11 @@
   }
 
   :root[saved-theme="dark"] .sidebar.left > .flex-component > div:first-child {
-    flex: 0 1 min(42vw, 9rem) !important;
+    flex: 0 1 min(54vw, 12rem) !important;
   }
 
   :root[saved-theme="dark"] .sidebar .search {
-    width: min(42vw, 9rem);
+    width: min(54vw, 12rem);
     min-width: 0;
     max-width: none;
   }
@@ -732,11 +758,11 @@
 
 @media (max-width: 420px) {
   :root[saved-theme="dark"] article {
-    padding: 1rem;
+    padding: 1.1rem;
   }
 
   :root[saved-theme="dark"] body[data-slug^="Projects/"] article {
-    padding: 0.85rem;
+    padding: 0.95rem;
   }
 
   :root[saved-theme="dark"] .project-preview {
