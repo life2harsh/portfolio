@@ -99,6 +99,7 @@ async function copyVaultDirectory(sourceDirectory) {
 
     const sourcePath = path.join(sourceDirectory, entry.name)
     const relativePath = path.relative(vaultRoot, sourcePath)
+    const extension = path.extname(entry.name).toLowerCase()
 
     if (relativePath === "Home.md") {
       const homepage = rewriteMarkdown(await readFile(sourcePath, "utf8"))
@@ -106,10 +107,14 @@ async function copyVaultDirectory(sourceDirectory) {
       continue
     }
 
+    if (extension === ".pdf" && relativePath !== "resume.pdf") {
+      continue
+    }
+
     const targetPath = path.join(contentRoot, relativePath)
     await mkdir(path.dirname(targetPath), { recursive: true })
 
-    if (path.extname(entry.name).toLowerCase() === ".md") {
+    if (extension === ".md") {
       const markdown = rewriteMarkdown(await readFile(sourcePath, "utf8"))
       await writeFile(targetPath, markdown)
       continue

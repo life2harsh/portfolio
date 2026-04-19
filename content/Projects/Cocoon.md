@@ -13,7 +13,7 @@ status: active
 
 > A privacy-conscious journaling app with a React frontend, FastAPI backend, and PWA support.
 
-<div class="project-preview" style="--project-preview-width: 1360px; --project-preview-height: 920px; --project-preview-scale: 0.74;">
+<div class="project-preview" style="--project-preview-aspect: 1360 / 920;">
   <div class="project-preview__eyebrow">Production Deployment</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">

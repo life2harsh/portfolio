@@ -12,7 +12,7 @@ status: shipped
 
 > An interactive git-learning experience for Open Source Developers Community, designed as a CRT terminal in WebGL.
 
-<div class="project-preview" style="--project-preview-width: 1200px; --project-preview-height: 820px; --project-preview-scale: 0.78;">
+<div class="project-preview" style="--project-preview-aspect: 1200 / 820;">
   <div class="project-preview__eyebrow">Production Deployment</div>
   <div class="project-preview__body">
     <div class="project-preview__copy">
